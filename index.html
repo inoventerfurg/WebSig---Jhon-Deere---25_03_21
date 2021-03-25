@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/ContedodeClcioentre08e1m_2.js"></script>
+        <script src="data/ContedodeClcioentre0e02m_3.js"></script>
+        <script src="data/ClassificaodoTipodeSoloentre08e1m_4.js"></script>
+        <script src="data/ClassificaodoTipodeSoloentre0e02m_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-22.418312491680332,-48.51720111366186],[-22.393983072916164,-48.47923083939559]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_Mapa_0');
+        map.getPane('pane_Mapa_0').style.zIndex = 400;
+        var layer_Mapa_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_Mapa_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_Mapa_0;
+        map.addLayer(layer_Mapa_0);
+        map.createPane('pane_Satlite_1');
+        map.getPane('pane_Satlite_1').style.zIndex = 401;
+        var layer_Satlite_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_Satlite_1',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_Satlite_1;
+        map.addLayer(layer_Satlite_1);
+        function pop_ContedodeClcioentre08e1m_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área</th>\
+                        <td>' + (feature.properties['Área'] !== null ? autolinker.link(feature.properties['Área'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Val. Máx.</th>\
+                        <td>' + (feature.properties['Val. Máx.'] !== null ? autolinker.link(feature.properties['Val. Máx.'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Val. Médi</th>\
+                        <td>' + (feature.properties['Val. Médi'] !== null ? autolinker.link(feature.properties['Val. Médi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Desv. Padr</th>\
+                        <td>' + (feature.properties['Desv. Padr'] !== null ? autolinker.link(feature.properties['Desv. Padr'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ContedodeClcioentre08e1m_2_0(feature) {
+            if (feature.properties['Val. Máx.'] >= 7.453200 && feature.properties['Val. Máx.'] <= 7.596056 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,212,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 7.596056 && feature.properties['Val. Máx.'] <= 9.081167 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,236,177,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 9.081167 && feature.properties['Val. Máx.'] <= 15.323200 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,217,142,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 15.323200 && feature.properties['Val. Máx.'] <= 22.782300 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,185,91,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 22.782300 && feature.properties['Val. Máx.'] <= 29.651178 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,153,41,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 29.651178 && feature.properties['Val. Máx.'] <= 32.942267 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,124,27,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 32.942267 && feature.properties['Val. Máx.'] <= 37.976267 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,95,14,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 37.976267 && feature.properties['Val. Máx.'] <= 45.685156 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,73,9,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 45.685156 && feature.properties['Val. Máx.'] <= 54.219600 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre08e1m_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,52,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_ContedodeClcioentre08e1m_2');
+        map.getPane('pane_ContedodeClcioentre08e1m_2').style.zIndex = 402;
+        map.getPane('pane_ContedodeClcioentre08e1m_2').style['mix-blend-mode'] = 'normal';
+        var layer_ContedodeClcioentre08e1m_2 = new L.geoJson(json_ContedodeClcioentre08e1m_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ContedodeClcioentre08e1m_2',
+            layerName: 'layer_ContedodeClcioentre08e1m_2',
+            pane: 'pane_ContedodeClcioentre08e1m_2',
+            onEachFeature: pop_ContedodeClcioentre08e1m_2,
+            style: style_ContedodeClcioentre08e1m_2_0,
+        });
+        bounds_group.addLayer(layer_ContedodeClcioentre08e1m_2);
+        map.addLayer(layer_ContedodeClcioentre08e1m_2);
+        function pop_ContedodeClcioentre0e02m_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área</th>\
+                        <td>' + (feature.properties['Área'] !== null ? autolinker.link(feature.properties['Área'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Val. Máx.</th>\
+                        <td>' + (feature.properties['Val. Máx.'] !== null ? autolinker.link(feature.properties['Val. Máx.'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Val. Médi</th>\
+                        <td>' + (feature.properties['Val. Médi'] !== null ? autolinker.link(feature.properties['Val. Médi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Desv. Padr</th>\
+                        <td>' + (feature.properties['Desv. Padr'] !== null ? autolinker.link(feature.properties['Desv. Padr'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ContedodeClcioentre0e02m_3_0(feature) {
+            if (feature.properties['Val. Máx.'] >= 6.821000 && feature.properties['Val. Máx.'] <= 13.608822 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,212,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 13.608822 && feature.properties['Val. Máx.'] <= 13.647400 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,236,177,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 13.647400 && feature.properties['Val. Máx.'] <= 13.684133 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,217,142,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 13.684133 && feature.properties['Val. Máx.'] <= 20.164222 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,185,91,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 20.164222 && feature.properties['Val. Máx.'] <= 20.999544 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,153,41,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 20.999544 && feature.properties['Val. Máx.'] <= 27.356533 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(236,124,27,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 27.356533 && feature.properties['Val. Máx.'] <= 40.927733 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(217,95,14,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 40.927733 && feature.properties['Val. Máx.'] <= 47.753889 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,73,9,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Val. Máx.'] >= 47.753889 && feature.properties['Val. Máx.'] <= 67.618900 ) {
+                return {
+                pane: 'pane_ContedodeClcioentre0e02m_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,52,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_ContedodeClcioentre0e02m_3');
+        map.getPane('pane_ContedodeClcioentre0e02m_3').style.zIndex = 403;
+        map.getPane('pane_ContedodeClcioentre0e02m_3').style['mix-blend-mode'] = 'normal';
+        var layer_ContedodeClcioentre0e02m_3 = new L.geoJson(json_ContedodeClcioentre0e02m_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ContedodeClcioentre0e02m_3',
+            layerName: 'layer_ContedodeClcioentre0e02m_3',
+            pane: 'pane_ContedodeClcioentre0e02m_3',
+            onEachFeature: pop_ContedodeClcioentre0e02m_3,
+            style: style_ContedodeClcioentre0e02m_3_0,
+        });
+        bounds_group.addLayer(layer_ContedodeClcioentre0e02m_3);
+        map.addLayer(layer_ContedodeClcioentre0e02m_3);
+        function pop_ClassificaodoTipodeSoloentre08e1m_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área</th>\
+                        <td>' + (feature.properties['Área'] !== null ? autolinker.link(feature.properties['Área'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tam. Máx.</th>\
+                        <td>' + (feature.properties['Tam. Máx.'] !== null ? autolinker.link(feature.properties['Tam. Máx.'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tam. Médi</th>\
+                        <td>' + (feature.properties['Tam. Médi'] !== null ? autolinker.link(feature.properties['Tam. Médi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Desv. Padr</th>\
+                        <td>' + (feature.properties['Desv. Padr'] !== null ? autolinker.link(feature.properties['Desv. Padr'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ClassificaodoTipodeSoloentre08e1m_4_0(feature) {
+            if (feature.properties['Tam. Máx.'] >= 0.056400 && feature.properties['Tam. Máx.'] <= 0.100786 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,52,4,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.100786 && feature.properties['Tam. Máx.'] <= 0.145171 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(196,80,10,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.145171 && feature.properties['Tam. Máx.'] <= 0.189557 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,114,23,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.189557 && feature.properties['Tam. Máx.'] <= 0.233943 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,153,41,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.233943 && feature.properties['Tam. Máx.'] <= 0.278329 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,196,108,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.278329 && feature.properties['Tam. Máx.'] <= 0.322714 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,230,165,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.322714 && feature.properties['Tam. Máx.'] <= 0.367100 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,212,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_ClassificaodoTipodeSoloentre08e1m_4');
+        map.getPane('pane_ClassificaodoTipodeSoloentre08e1m_4').style.zIndex = 404;
+        map.getPane('pane_ClassificaodoTipodeSoloentre08e1m_4').style['mix-blend-mode'] = 'normal';
+        var layer_ClassificaodoTipodeSoloentre08e1m_4 = new L.geoJson(json_ClassificaodoTipodeSoloentre08e1m_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ClassificaodoTipodeSoloentre08e1m_4',
+            layerName: 'layer_ClassificaodoTipodeSoloentre08e1m_4',
+            pane: 'pane_ClassificaodoTipodeSoloentre08e1m_4',
+            onEachFeature: pop_ClassificaodoTipodeSoloentre08e1m_4,
+            style: style_ClassificaodoTipodeSoloentre08e1m_4_0,
+        });
+        bounds_group.addLayer(layer_ClassificaodoTipodeSoloentre08e1m_4);
+        map.addLayer(layer_ClassificaodoTipodeSoloentre08e1m_4);
+        function pop_ClassificaodoTipodeSoloentre0e02m_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">ID</th>\
+                        <td>' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área</th>\
+                        <td>' + (feature.properties['Área'] !== null ? autolinker.link(feature.properties['Área'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tam. Máx.</th>\
+                        <td>' + (feature.properties['Tam. Máx.'] !== null ? autolinker.link(feature.properties['Tam. Máx.'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tam. Médi</th>\
+                        <td>' + (feature.properties['Tam. Médi'] !== null ? autolinker.link(feature.properties['Tam. Médi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Desv. Padr</th>\
+                        <td>' + (feature.properties['Desv. Padr'] !== null ? autolinker.link(feature.properties['Desv. Padr'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ClassificaodoTipodeSoloentre0e02m_5_0(feature) {
+            if (feature.properties['Tam. Máx.'] >= 0.083100 && feature.properties['Tam. Máx.'] <= 0.124929 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(153,52,4,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.124929 && feature.properties['Tam. Máx.'] <= 0.166757 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(196,80,10,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.166757 && feature.properties['Tam. Máx.'] <= 0.208586 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,114,23,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.208586 && feature.properties['Tam. Máx.'] <= 0.250414 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,153,41,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.250414 && feature.properties['Tam. Máx.'] <= 0.292243 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,196,108,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.292243 && feature.properties['Tam. Máx.'] <= 0.334071 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,230,165,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Tam. Máx.'] >= 0.334071 && feature.properties['Tam. Máx.'] <= 0.375900 ) {
+                return {
+                pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,212,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_ClassificaodoTipodeSoloentre0e02m_5');
+        map.getPane('pane_ClassificaodoTipodeSoloentre0e02m_5').style.zIndex = 405;
+        map.getPane('pane_ClassificaodoTipodeSoloentre0e02m_5').style['mix-blend-mode'] = 'normal';
+        var layer_ClassificaodoTipodeSoloentre0e02m_5 = new L.geoJson(json_ClassificaodoTipodeSoloentre0e02m_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ClassificaodoTipodeSoloentre0e02m_5',
+            layerName: 'layer_ClassificaodoTipodeSoloentre0e02m_5',
+            pane: 'pane_ClassificaodoTipodeSoloentre0e02m_5',
+            onEachFeature: pop_ClassificaodoTipodeSoloentre0e02m_5,
+            style: style_ClassificaodoTipodeSoloentre0e02m_5_0,
+        });
+        bounds_group.addLayer(layer_ClassificaodoTipodeSoloentre0e02m_5);
+        map.addLayer(layer_ClassificaodoTipodeSoloentre0e02m_5);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Classificação do Tipo de Solo (entre 0 e 0.2 m)<br /><table><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_Argila0.png" /></td><td>Argila</td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_1.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_2.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_Silte3.png" /></td><td>Silte</td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_4.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_5.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre0e02m_5_Areia6.png" /></td><td>Areia</td></tr></table>': layer_ClassificaodoTipodeSoloentre0e02m_5,'Classificação do Tipo de Solo (entre 0.8 e 1 m)<br /><table><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_Argila0.png" /></td><td>Argila</td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_1.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_2.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_Silte3.png" /></td><td>Silte</td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_4.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_5.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ClassificaodoTipodeSoloentre08e1m_4_Areia6.png" /></td><td>Areia</td></tr></table>': layer_ClassificaodoTipodeSoloentre08e1m_4,'Conteúdo de Cálcio (entre 0 e 0.2 m)<br /><table><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_Baixa0.png" /></td><td>Baixa </td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_1.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_2.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_3.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_Médio4.png" /></td><td>Médio</td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_5.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_6.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_7.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre0e02m_3_Alta8.png" /></td><td>Alta</td></tr></table>': layer_ContedodeClcioentre0e02m_3,'Conteúdo de Cálcio (entre 0.8 e 1 m)<br /><table><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_Baixa0.png" /></td><td>Baixa</td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_1.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_2.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_3.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_Médio4.png" /></td><td>Médio</td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_5.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_6.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_7.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/ContedodeClcioentre08e1m_2_Alta8.png" /></td><td>Alta</td></tr></table>': layer_ContedodeClcioentre08e1m_2,"Satélite": layer_Satlite_1,"Mapa": layer_Mapa_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
